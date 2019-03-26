@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="text" id="input" />
+      <div id="d"></div>
+    </div>
+
+    <script>
+      let obj = {
+        val: ''
+      }
+
+      let temp = {
+        val: ''
+      }
+
+      //三参数 第一参数 目标对象 第二参数 目标属性 第三参数 {监听方式}
+      Object.defineProperty(obj, 'val', {
+        get: function() {
+          return temp.val
+        },
+        set: function(val) {
+          if (temp.val == val) return
+          temp.val = val
+          document.getElementById('d').innerText = obj.val
+        }
+      })
+
+      document.getElementById('input').value = obj.val
+      document.getElementById('d').innerText = obj.val
+
+      document.getElementById('input').addEventListener('input', function(ev) {
+        // console.log(ev)
+        obj.val = ev.target.value
+      })
+    </script>
+  </body>
+</html>

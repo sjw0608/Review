@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>这是App</h1>
+        <cc :num='num' :name='name' @hi='hi'></cc>
+    </div>
+
+    <script>
+        Vue.component('cc', {
+            template: `
+                <div>这是子组件cc---》{{num}}
+                <button @click='go'>cc点击向app触发事件</button>
+                <fff v-bind='$attrs' v-on="$listeners"></fff>
+                </div>
+            `,
+            props: {
+                num: Number
+            },
+            methods: {
+                go() {
+                    this.$emit('hi', 'ccc数据')
+                }
+            }
+        })
+
+        Vue.component('fff', {
+            template: `
+                <div>cc的子组件fff--->{{f}}
+                <button @click='go'>fff点击向app触发事件</button>
+                </div>
+            `,
+            data() {
+                return {
+                    f: ''
+                }
+            },
+            mounted() {
+                this.f = this.$attrs.name
+            },
+            methods: {
+                go() {
+                    this.$emit('hi', 'fff数据')
+                }
+            }
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    num: 1000,
+                    name: '张三'
+                }
+            },
+            methods: {
+                hi(val) {
+                    console.log('app===>', val);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

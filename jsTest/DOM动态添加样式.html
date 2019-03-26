@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myDiv"></div>
+    <form action="" method="post">
+      <input type="text" name="username" value="" />
+      <input type="button" value="Click me" onclick="alert(event.type)" />
+      <input type="button" value="Click me2" onclick="alert(this.value)" />
+      <input type="button" value="Click me3" onclick="alert(username.value)" />
+    </form>
+    <script>
+      var myDiv = document.getElementById('myDiv')
+      myDiv.style.backgroundColor = 'red'
+      myDiv.style.height = '200px'
+      myDiv.style.width = '200px'
+      myDiv.style.border = '1px solid black'
+    </script>
+  </body>
+</html>

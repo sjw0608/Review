@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Point {
+        constructor(x, y) {
+          this.x = x
+          this.y = y
+        }
+
+        toString() {
+          return '(' + this.x + ',' + this.y + ')'
+        }
+      }
+
+      var p = new Point(1, 2)
+      console.log(p.toString())
+
+      class Foo {
+        static bar() {
+          console.log(this)
+          this.baz()
+        }
+        static baz() {
+          console.log('hello')
+        }
+        baz() {
+          console.log('world')
+        }
+      }
+
+      Foo.bar() // hello
+    </script>
+  </body>
+</html>

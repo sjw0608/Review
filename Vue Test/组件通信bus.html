@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <aaa>我是组件aaa</aaa>
+        <bbb>我是组件bbb</bbb>
+    </div>
+    <script>
+        Vue.component('aaa', {
+            template: `
+                <div>我是子组件aaa
+                    <button @click='go'>点我传递参数</button>
+                </div>
+            `,
+            methods: {
+                go() {
+                    bus.$emit('hi', '这是aaa来的数据')
+                }
+            }
+        })
+
+        Vue.component('bbb', {
+            template: `
+                <div>我是子组件bbb
+                </div>
+            `,
+            mounted() {
+                bus.$on('hi', function (data) {
+                    console.log('这是bbb=====>', data);
+                })
+            },
+            methods: {}
+        })
+        let bus = new Vue()
+        let app = new Vue({
+            el: '#app',
+            mounted() {
+                bus.$on('hi', function (data) {
+                    console.log('这是app=====>', data);
+                })
+            },
+        })
+    </script>
+</body>
+
+</html>

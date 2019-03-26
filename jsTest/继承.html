@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var serviceContain = [
+        {
+          name: '漏洞扫描',
+          value: 'remoteVulScan',
+          attr: '0'
+        },
+        {
+          name: '渗透测试',
+          value: 'remotePenerTest',
+          attr: '0'
+        },
+        {
+          name: '网站监测',
+          value: 'remoteWebMon',
+          attr: '0'
+        },
+        {
+          name: '云防御',
+          value: 'remoteDefense',
+          attr: '0'
+        },
+        {
+          name: '网站信息变更',
+          value: 'remoteWebUpdate',
+          attr: '0'
+        },
+        {
+          name: '其他',
+          value: 'remoteOther',
+          attr: '0'
+        },
+        {
+          name: '现场排查',
+          value: 'fieldOnsit',
+          attr: '0'
+        },
+        {
+          name: '风险评估',
+          value: 'fieldRisk',
+          attr: '0'
+        },
+        {
+          name: '渗透测试',
+          value: 'fieldPenerTest',
+          attr: '0'
+        },
+        {
+          name: '其他',
+          value: 'fieldOther',
+          attr: '0'
+        },
+        { name: '', value: '' },
+        { name: '', value: '' },
+        {
+          name: '平台搭建部署',
+          value: 'operatePlatform',
+          attr: '0'
+        },
+        {
+          name: '平台的更新升级',
+          value: 'operateUpdate',
+          attr: '0'
+        },
+        {
+          name: '账号录入',
+          value: 'operateUser',
+          attr: '0'
+        },
+        {
+          name: '网站备案',
+          value: 'operateWebsitefiling',
+          attr: '0'
+        },
+        {
+          name: '平台维护',
+          value: 'operateMaintain',
+          attr: '0'
+        },
+        {
+          name: '其他',
+          value: 'operateOther',
+          attr: '0'
+        }
+      ]
+
+      var obj = {}
+      for (let i in serviceContain) {
+        if (serviceContain[i].value !== '') {
+          obj[serviceContain[i].value] = serviceContain[i].attr
+        }
+      }
+    </script>
+  </body>
+</html>

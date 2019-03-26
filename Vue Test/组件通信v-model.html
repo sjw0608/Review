@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>这是App ---> {{num}}</h1>
+        <cc v-model="num"></cc>
+    </div>
+
+    <script>
+        Vue.component('cc', {
+            template: `<div>这是子组件cc ---> {{value}}
+                <button @click="go">点击传递参数</button></div>
+            `,
+            props: {
+                value: Number
+            },
+            methods: {
+                go() {
+                    this.$emit('input', 50000)
+                }
+            }
+
+        })
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    num: 1000
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>创建对象</title>
+  </head>
+  <body>
+    <h5>创建对象</h5>
+    <script>
+      // 1.工厂模式
+      //   function creatPerson(name, age, job) {
+      //     var obj = new Object()
+      //     obj.name = name
+      //     obj.age = age
+      //     obj.job = job
+      //     obj.sayName = function() {
+      //       alert(this.name)
+      //     }
+      //     return obj
+      //   }
+      //   var person1 = creatPerson('张三', 19, 'Doctor')
+      //   person1.sayName()
+
+      // 2.构造函数创建
+
+      //   function Person(name, age, job) {
+      //     this.name = name
+      //     this.age = age
+      //     this.job = job
+      //     this.sayName = sayName
+      //   }
+
+      //   function sayName() {
+      //     alert(this.name)
+      //   }
+
+      //   var person2 = new Person('李四', 20, 'Student')
+      //   person2.sayName()
+
+      //3.原型模型
+      // function Person() {}
+      // Person.prototype.name = '王五'
+      // Person.prototype.age = 20
+      // Person.prototype.job = '赌徒'
+      // Person.prototype.sayName = function() {
+      //   alert(this.name)
+      // }
+
+      // var person3 = new Person()
+      //   //   person3.sayName()
+      //   console.log(person3.__proto__ == Person.prototype)
+      //   console.log(Person.prototype)
+
+      //4.组合使用构造函数和原型模型创建对象
+      //   function Person(name, age, job) {
+      //     this.name = name
+      //     this.age = age
+      //     this.job = job
+      //     this.friends = ['张三', '李四']
+      //   }
+
+      //   Person.prototype = {
+      //     constructor: Person,
+      //     sayName: function() {
+      //       alert(this.name)
+      //     }
+      //   }
+
+      //   var person4 = new Person('王五', 20, '无业游民')
+      //   person4.sayName()
+
+      //5.动态原型模式
+      //   function Person(name, age, job) {
+      //     this.name = name
+      //     this.age = age
+      //     this.job = job
+
+      //     if (typeof this.sayName != 'function') {
+      //       Person.prototype.sayName = function() {
+      //         alert(this.name)
+      //       }
+      //     }
+      //   }
+      //   var person5 = new Person('小蓝', 20, 'Color')
+      //   person5.sayName()
+
+      //6.寄生构造函数
+      //   function SpecialArray() {
+      //     //创建数组
+      //     var values = new Array()
+      //     //添加值
+      //     values.push.apply(values, arguments)
+      //     //添加方法
+      //     values.toPipedString = function() {
+      //       return this.join('|')
+      //     }
+      //     //返回数组值
+      //     return values
+      //   }
+
+      //   var colors = new SpecialArray('red', 'blue', 'green')
+      //   alert(colors.toPipedString()) //red|blue|green
+
+      //7.稳妥构造函数创建
+      /**
+            所谓稳妥对象，指的是没有公共属性，而且其方法也不引用 this 的对象。稳妥对象最适合在
+            一些安全的环境中（这些环境中会禁止使用 this 和 new），或者在防止数据被其他应用程序（如 Mashup
+            程序）改动时使用。稳妥构造函数遵循与寄生构造函数类似的模式，但有两点不同：一是新创建对象的
+            实例方法不引用 this；二是不使用 new 操作符调用构造函数。
+        */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="myLinks">
+      <li id="goSomewhere">Go Somewhere</li>
+      <li id="doSomething">Do Something</li>
+      <li id="sayHi">Say hi</li>
+    </ul>
+    <script src="./addhandler.js"></script>
+    <script>
+      //   普通添加事件
+      //   var item1 = document.getElementById('goSomewhere')
+      //   var item2 = document.getElementById('doSomething')
+      //   var item3 = document.getElementById('sayHi')
+
+      //   EventUtil.addHandler(item1, 'click', event => {
+      //     location.href = 'http://www.wrox.com'
+      //   })
+
+      //   EventUtil.addHandler(item2, 'click', event => {
+      //     document.title = 'I change the document`s title'
+      //   })
+
+      //   EventUtil.addHandler(item3, 'click', event => {
+      //     alert('Hi')
+      //   })
+
+      //   事件委托
+      var list = document.getElementById('myLinks')
+
+      EventUtil.addHandler(list, 'click', event => {
+        event = EventUtil.getEvent(event)
+        var target = EventUtil.getTarget(event)
+        console.log(target)
+
+        switch (target.id) {
+          case 'goSomewhere':
+            location.href = 'http://www.wrox.com'
+            break
+          case 'doSomething':
+            document.title = 'I change the document`s title'
+            break
+          case 'sayHi':
+            alert('Hi')
+            break
+        }
+      })
+    </script>
+  </body>
+</html>

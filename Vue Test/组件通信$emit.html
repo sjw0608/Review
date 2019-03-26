@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>我是父组件App</h1>
+        <aaa @func="sayHi"></aaa>
+    </div>
+
+    <script>
+        Vue.component('aaa', {
+            template: `
+                <div>我是子组件aaa
+                    <button @click='handleClick'>点我</button>
+                </div>
+            `,
+            data() {
+                return {
+                    hi: '我不好'
+                }
+            },
+            methods: {
+                handleClick() {
+                    this.$emit('func', this.hi)
+                }
+            }
+        })
+
+        let app = new Vue({
+            el: "#app",
+            methods: {
+                sayHi(msg) {
+                    console.log(msg);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

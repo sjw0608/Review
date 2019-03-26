@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>这是app---->{{num}}</h1>
+        <aaa :num.sync="num">我是组件aaa</aaa>
+    </div>
+    <script>
+        Vue.component('aaa', {
+            template: `
+                <div>我是子组件aaa ---->{{num}}
+                    <button @click='go'>点我传递参数</button>
+                </div>
+            `,
+            props: ['num'],
+            methods: {
+                go() {
+
+                }
+            }
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    num: 1000
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

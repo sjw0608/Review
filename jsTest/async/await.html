@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function foo() {
+        //     console.log(1);
+        // }
+
+        // function bar() {
+        //     console.log(2);
+        // }
+
+        // async function test() {
+        //     await foo()
+        //     await bar()
+        //     console.log(3);
+        // }
+        // test()
+
+        async function f() {
+            console.log('fff start');
+            await f1()
+            console.log('fff end');
+        }
+
+        async function f1() {
+            console.log('f1');
+        }
+        f()
+        console.log('start');
+
+        function f2() {
+            return new Promise((resolve, reject) => {
+                console.log('Promise start');
+                resolve()
+                console.log('Promise end');
+            })
+        }
+        f2().then(() => {
+            console.log('then');
+        })
+        console.log('allend');
+    </script>
+</body>
+
+</html>

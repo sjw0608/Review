@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+        .container {
+            margin: 20px auto;
+            width: 1000px;
+        }
+
+        .container .imgBox {
+            margin-bottom: 20px;
+            height: 300px;
+            background: url('') no-repeat center center #eee;
+        }
+
+        .container .imgBox img {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="imgBox"><img src="" alt="" data-src=""></div> -->
+    </div>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/lazyload.js"></script>
+    <script src="./js/ajax.js"></script>
+    <script>
+        ajax({
+            url: './js/ajax.json',
+            success: function (res) {
+                console.log(res);
+            }
+        })
+    </script>
+</body>
+
+</html>

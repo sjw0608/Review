@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>这是App</h1>
+        <cc></cc>
+    </div>
+
+    <script>
+        Vue.component('cc', {
+            template: `
+            <div>
+                这是一个子组件cc----》{{num}}
+                <fff></fff>
+            </div>
+            `,
+            inject: ['num']
+        })
+
+        Vue.component('fff', {
+            template: `
+            <div>
+                这是一个子组件fff----》{{num}}
+            </div>
+            `,
+            inject: ['num'] //注入 想用的数据
+        })
+
+        let app = new Vue({
+            el: "#app",
+            provide: { // 提供一个共享数据源
+                num: 1000
+            }
+        })
+    </script>
+</body>
+
+</html>

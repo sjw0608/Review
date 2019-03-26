@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>区别</h1>
+        <ul>
+            <li>
+                都可以改变this得执行，第一个参数都是this要指向得对象
+            </li>
+            <li>
+                bind改变this指向后必须在调用，要想传参数只能再调用的时候进行传值
+                call和apply在改变this得指向的时候，可以传递参数。
+                call可以传递多个参数，和方法中的参数一一对应
+                apply只能传两个参数，第一个为this要指向的对象，第二个参数是一个数组
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var xw = {
+            name: '小王',
+            age: 24,
+            gender: '男',
+            say: function () {
+                console.log('我叫' + this.name + ' ,' + this.gender + ' ,今年' + this.age + '岁');
+            }
+        }
+
+        var xh = {
+            name: '小红',
+            age: 18,
+            gender: '女',
+        }
+
+        xw.say() //我叫小王 ,男 ,今年24岁
+
+        xw.say.call(xh) //我叫小红 ,女 ,今年18岁
+
+        xw.say.apply(xh) //我叫小红 ,女 ,今年18岁
+
+        xw.say.bind(xh)() //我叫小红 ,女 ,今年18岁
+    </script>
+</body>
+
+</html>

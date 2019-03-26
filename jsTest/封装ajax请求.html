@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        ajax({
+            url: "", //请求地址
+            type: 'GET', //请求方式
+            data: {}, //请求参数
+            dataType: "json", // 返回值类型的设定
+            async: false, //是否异步
+            success: function (response, xml) {
+                console.log(response); //   此处执行请求成功后的代码
+            },
+            fail: function (status) {
+                console.log('状态码为' + status); // 此处为执行成功后的代码 
+            }
+        });
+
+        function ajax(options) {
+            // 相应的参数
+            options = options || {}
+            //请求类型
+            options.type = (options.type || 'GET').toUpperCase()
+            // 返回的数据类型
+            options.dataType = options.dataType || 'json'
+            // 是否为异步请求
+            options.async = options.async || true
+            // 对需要传入的参数进行处理
+            var params = getParams(options.data)
+            var xhr
+            /**
+             * 创建一个ajax请求
+             * W3C标准和IE标准
+             */
+            if (window.XMLHttpRequest) {
+                /**
+                 * W3C标砖
+                 */
+                xhr = new XMLHttpRequest()
+            } else {
+                /**
+                 * IE标准
+                 * @type {ActiveXObject}
+                 */
+                xhr = new ActiveXObject('Microsoft.XMLHTTP')
+            }
+            if (options.type == 'GET') {
+                xhr.open('GET', options.url + '?' + params, options.async)
+                xhr.send(null)
+            } else if (options.type == 'POST') {
+                xhr.open('POST', options.url, options.async)
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+                xhr.send(params)
+            }
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    var status = xhr.status
+                    if (status >= 200 && status < 300) {
+                        options.success && options.success(xhr.responseText, xhr.responseXML)
+                    } else {
+                        options.fail && options.fail(status)
+                    }
+                }
+            }
+        }
+
+
+        /**
+         * 对象参数的处理
+         * @param data
+         * @returns {string}
+         */
+
+        function getParams(data) {
+            var arr = []
+            for (var param in data) {
+                arr.push(encodeURIComponent(param) + '=' + encodeURIComponent(data[param]))
+            }
+            // arr.push('randomNumber=' + Math.random()).replace('.')
+            return arr.join('&')
+        }
+    </script>
+</body>
+
+</html>

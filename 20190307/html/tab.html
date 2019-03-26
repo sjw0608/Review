@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .tabBox {
+            margin: 20px auto;
+            width: 500px;
+        }
+
+        .tabBox ul {
+            position: relative;
+            top: 1px;
+        }
+
+        .tabBox ul li {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 0 10px;
+            line-height: 33px;
+            border: 1px solid #aaa;
+            cursor: pointer;
+        }
+
+        .tabBox ul li.active {
+            border-bottom-color: #fff;
+        }
+
+        .tabBox div {
+            display: none;
+            line-height: 148px;
+            text-align: center;
+            border: 1px solid #aaa;
+        }
+
+        .tabBox div.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabBox" id="tabBox">
+        <ul>
+            <li class="active">新闻</li>
+            <li>电影</li>
+            <li>音乐</li>
+        </ul>
+        <div class="active">金三胖来华访问</div>
+        <div>流浪地球</div>
+        <div>没时间</div>
+    </div>
+    <!-- <a href="http://baidu.com?age=18&name=张三#active" id="link">测试</a> -->
+    <script src="../js/tab.js"></script>
+</body>
+
+</html>

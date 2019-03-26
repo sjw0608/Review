@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class A {
+            init() {
+                console.log('1')
+            }
+        }
+
+        let target = new A()
+        target.init()
+        A.prototype.init = () => {
+            console.log('2')
+        }
+        target.init()
+
+
+        // let array = [1, 1, 1]
+        // array.forEach(async (i) => {
+        //     let res = await post(i)
+        //     console.log(res);
+        // })
+
+        // function post(i) {
+        //     return new Promise((resolve) => {
+        //         setTimeout(() => {
+        //             resolve(i)
+        //         }, 1000)
+        //     })
+        // }
+    </script>
+</body>
+
+</html>

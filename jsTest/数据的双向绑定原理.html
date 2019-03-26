@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" id="input">
+        <div id="div1"></div>
+    </div>
+
+    <script>
+        var obj = {
+            val: ''
+        }
+        var temp = {
+            val: ''
+        }
+
+        Object.defineProperty(obj, 'val', {
+            get: function () {
+                return temp.val
+            },
+            set: function (val) {
+                // console.log(val);
+                if (temp.val == val) return
+                temp.val = val
+                document.getElementById('div1').innerText = obj.val
+            }
+        })
+
+        // document.getElementById('input').value = obj.val
+        // document.getElementById('div1').innerText = obj.val
+
+        document.getElementById('input').addEventListener('input', function (ev) {
+            // console.log(ev.target.value);
+            obj.val = ev.target.value
+        })
+    </script>
+</body>
+
+</html>

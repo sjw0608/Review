@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔行变色</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .box {
+            margin: 20px auto;
+            width: 300px;
+        }
+
+        .active {
+            color: #fff;
+        }
+
+        .box li {
+            padding: 0 5px;
+            line-height: 35px;
+            border-bottom: 1px dashed #aaa;
+            text-align: center;
+            cursor: pointer;
+            text-overflow: ellipsis;
+            white-space: normal;
+            overflow: hidden;
+        }
+
+        /* .box li:nth-of-type(3n+1) {
+            background-color: skyblue;
+        } */
+
+        /* .box li:hover {
+            background-color: red;
+        } */
+    </style>
+</head>
+
+<body>
+    <ul class="box" id="box">
+        <li>第一行</li>
+        <li>第二个行</li>
+        <li>第三上</li>
+        <li>地四下</li>
+        <li>第五过</li>
+        <li>第六国</li>
+    </ul>
+    <script src="../js/changeColor.js"></script>
+</body>
+
+</html>
